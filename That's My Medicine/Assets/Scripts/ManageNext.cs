@@ -8,6 +8,6 @@ public class ManageNext : MonoBehaviour
 
     private void OnMouseDown()
     {
-        gameManager.MakeMedicine(2);
+        gameManager.MakeMedicine(5);
     }
 }

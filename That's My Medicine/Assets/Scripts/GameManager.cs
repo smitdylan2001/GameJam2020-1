@@ -21,6 +21,14 @@ public class GameManager : MonoBehaviour
     int moveDirection;
     public float slideSpeed;
 
+    public LetterControll showLetter;
+
+    public GameObject LetterPara;
+    public GameObject LetterIbu;
+    public GameObject LetterM3;
+    public GameObject LetterM4;
+    public GameObject LetterM5;
+
     void Start()
     {
         widthDistance = Screen.width/8;
@@ -49,8 +57,15 @@ public class GameManager : MonoBehaviour
 
     public void MakeMedicine(int amount)
     {
-        currentMedicine = medicine[Random.Range(0,5)];
+        int randomValue = Random.Range(0, amount);
+        currentMedicine = medicine[randomValue];
         Debug.Log(currentMedicine);
+        GameObject letter = GameObject.Find("Letter1");
+        Debug.Log(letter);
+        letter.SetActive(false);
+
+
+        Debug.Log (GameObject.Find(medicine[randomValue]));
     }
 
     public void CheckMedicine(string selectedMedicine)
