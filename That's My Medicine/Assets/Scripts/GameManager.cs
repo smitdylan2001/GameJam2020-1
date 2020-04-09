@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     int score;
-    public List<string> medicine = new List<string>();
+    List<string> medicine = new List<string>();
 
     float width;
     float height;
@@ -21,24 +21,31 @@ public class GameManager : MonoBehaviour
     int moveDirection;
     public float slideSpeed;
 
-    public LetterControll showLetter;
+    public GameObject letter;
+    SpriteRenderer letterSprite;
 
-    public GameObject LetterPara;
-    public GameObject LetterIbu;
-    public GameObject LetterM3;
-    public GameObject LetterM4;
-    public GameObject LetterM5;
+    public GameObject LetterAmputate;
+    public GameObject LetterPray;
+    public GameObject LetterSoap;
+    public GameObject LetterDistance;
+    public GameObject LetterInhalator;
+    public GameObject LetterNeedle;
+    public GameObject LetterStrip;
+    public GameObject LetterBottle;
 
     void Start()
     {
         widthDistance = Screen.width/8;
         heightDistance = Screen.height/3;
 
-        medicine.Add("Ibu");
-        medicine.Add("Para");
-        medicine.Add("M3");
-        medicine.Add("M4");
-        medicine.Add("M5");
+        medicine.Add("Amputate");
+        medicine.Add("Pray");
+        medicine.Add("Soap");
+        medicine.Add("Distance");
+        medicine.Add("Inhalator");
+        medicine.Add("Needle");
+        medicine.Add("Strip");
+        medicine.Add("Bottle");
 
         itemListPosition = GameObject.Find("ItemList").GetComponent<Transform>();
     }
@@ -60,12 +67,39 @@ public class GameManager : MonoBehaviour
         int randomValue = Random.Range(0, amount);
         currentMedicine = medicine[randomValue];
         Debug.Log(currentMedicine);
-        GameObject letter = GameObject.Find("Letter1");
-        Debug.Log(letter);
-        letter.SetActive(false);
 
-
-        Debug.Log (GameObject.Find(medicine[randomValue]));
+        if (currentMedicine == "Amputate")
+        {
+            LetterAmputate.SetActive(true);
+        }
+        if (currentMedicine == "Pray")
+        {
+            LetterPray.SetActive(true);
+        }
+        if (currentMedicine == "Soap")
+        {
+            LetterSoap.SetActive(true);
+        }
+        if (currentMedicine == "Distance")
+        {
+            LetterDistance.SetActive(true);
+        }
+        if (currentMedicine == "Inhalator")
+        {
+            LetterInhalator.SetActive(true);
+        }
+        if (currentMedicine == "Needle")
+        {
+            LetterNeedle.SetActive(true);
+        }
+        if (currentMedicine == "Strip")
+        {
+            LetterStrip.SetActive(true);
+        }
+        if (currentMedicine == "Bottle")
+        {
+            LetterBottle.SetActive(true);
+        }
     }
 
     public void CheckMedicine(string selectedMedicine)
