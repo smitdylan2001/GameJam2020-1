@@ -5,9 +5,14 @@ using UnityEngine;
 public class ManageNext : MonoBehaviour
 {
     public GameManager gameManager;
+    
+
 
     private void OnMouseDown()
     {
         gameManager.MakeMedicine(8);
+        gameManager.NewCharacter();
+
+        this.gameObject.SetActive(false);
     }
 }

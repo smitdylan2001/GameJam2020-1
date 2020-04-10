@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    
+
     int score;
     List<string> medicine = new List<string>();
 
@@ -14,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     string currentMedicine;
 
+    public GameObject itemList;
     Transform itemListPosition;
 
     bool moveBool;
@@ -33,6 +36,17 @@ public class GameManager : MonoBehaviour
     public GameObject LetterStrip;
     public GameObject LetterBottle;
 
+    public GameObject PeopleAmputate;
+    public GameObject PeoplePray;
+    public GameObject PeopleSoap;
+    public GameObject PeopleDistance;
+    public GameObject PeopleInhalator;
+    public GameObject PeopleNeedle;
+    public GameObject PeopleStrip;
+    public GameObject PeopleBottle;
+
+    public bool isOnPosition;
+
     void Start()
     {
         widthDistance = Screen.width/8;
@@ -47,7 +61,8 @@ public class GameManager : MonoBehaviour
         medicine.Add("Strip");
         medicine.Add("Bottle");
 
-        itemListPosition = GameObject.Find("ItemList").GetComponent<Transform>();
+        itemListPosition = itemList.GetComponent<Transform>();
+        
     }
 
     void FixedUpdate()
@@ -56,50 +71,59 @@ public class GameManager : MonoBehaviour
         {
             itemListPosition.position = new Vector3(itemListPosition.position.x + (moveDirection * slideSpeed), itemListPosition.position.y, itemListPosition.position.z);
         }
-        if (itemListPosition.position.x == -1000 || itemListPosition.position.x == -2000 || itemListPosition.position.x == -3000 || itemListPosition.position.x == 0)
+        if (moveBool && (itemListPosition.position.x == -1000 || itemListPosition.position.x == -2000 || itemListPosition.position.x == -3000 || itemListPosition.position.x == 0))
         {
             moveBool = false;
         }
+        ShowLetter();
     }
 
+    void ShowLetter()
+    {
+        if (isOnPosition)
+        {
+            if (currentMedicine == "Amputate")
+            {
+                LetterAmputate.SetActive(true);
+            }
+            if (currentMedicine == "Pray")
+            {
+                LetterPray.SetActive(true);
+            }
+            if (currentMedicine == "Soap")
+            {
+                LetterSoap.SetActive(true);
+            }
+            if (currentMedicine == "Distance")
+            {
+                LetterDistance.SetActive(true);
+            }
+            if (currentMedicine == "Inhalator")
+            {
+                LetterInhalator.SetActive(true);
+            }
+            if (currentMedicine == "Needle")
+            {
+                LetterNeedle.SetActive(true);
+            }
+            if (currentMedicine == "Strip")
+            {
+                LetterStrip.SetActive(true);
+            }
+            if (currentMedicine == "Bottle")
+            {
+                LetterBottle.SetActive(true);
+            }
+            isOnPosition = false;
+        }
+    }
     public void MakeMedicine(int amount)
     {
         int randomValue = Random.Range(0, amount);
         currentMedicine = medicine[randomValue];
         Debug.Log(currentMedicine);
 
-        if (currentMedicine == "Amputate")
-        {
-            LetterAmputate.SetActive(true);
-        }
-        if (currentMedicine == "Pray")
-        {
-            LetterPray.SetActive(true);
-        }
-        if (currentMedicine == "Soap")
-        {
-            LetterSoap.SetActive(true);
-        }
-        if (currentMedicine == "Distance")
-        {
-            LetterDistance.SetActive(true);
-        }
-        if (currentMedicine == "Inhalator")
-        {
-            LetterInhalator.SetActive(true);
-        }
-        if (currentMedicine == "Needle")
-        {
-            LetterNeedle.SetActive(true);
-        }
-        if (currentMedicine == "Strip")
-        {
-            LetterStrip.SetActive(true);
-        }
-        if (currentMedicine == "Bottle")
-        {
-            LetterBottle.SetActive(true);
-        }
+        
     }
 
     public void CheckMedicine(string selectedMedicine)
@@ -108,10 +132,12 @@ public class GameManager : MonoBehaviour
         if (selectedMedicine == currentMedicine)
         {
             Debug.Log("SUCCES");
+            MoveObject.succes = true;
         }
         else
         {
-            Debug.Log("FUCK");
+            Debug.Log("FUCK"); 
+            MoveObject.death = true;
         }
     }
 
@@ -119,5 +145,41 @@ public class GameManager : MonoBehaviour
     {
         moveBool = true;
         moveDirection = movement;
+    }
+
+    public void NewCharacter()
+    {
+        if (currentMedicine == "Amputate")
+        {
+            PeopleAmputate.SetActive(true);
+        }
+        if (currentMedicine == "Pray")
+        {
+            PeoplePray.SetActive(true);
+        }
+        if (currentMedicine == "Soap")
+        {
+            PeopleSoap.SetActive(true);
+        }
+        if (currentMedicine == "Distance")
+        {
+            PeopleDistance.SetActive(true);
+        }
+        if (currentMedicine == "Inhalator")
+        {
+            PeopleInhalator.SetActive(true);
+        }
+        if (currentMedicine == "Needle")
+        {
+            PeopleNeedle.SetActive(true);
+        }
+        if (currentMedicine == "Strip")
+        {
+            PeopleStrip.SetActive(true);
+        }
+        if (currentMedicine == "Bottle")
+        {
+            PeopleBottle.SetActive(true);
+        }
     }
 }

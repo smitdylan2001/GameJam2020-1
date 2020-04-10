@@ -41,6 +41,12 @@ TagManager:
   - name: Background
     uniqueID: 1218788839
     locked: 0
+  - name: People
+    uniqueID: 3605919491
+    locked: 0
+  - name: Desk
+    uniqueID: 1223569055
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
