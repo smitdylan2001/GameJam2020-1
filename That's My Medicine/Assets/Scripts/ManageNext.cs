@@ -5,11 +5,11 @@ using UnityEngine;
 public class ManageNext : MonoBehaviour
 {
     public GameManager gameManager;
-
+    public GameObject letter;
 
     private void OnMouseDown()
     {
-        gameManager.MakeMedicine(8);
+        gameManager.MakeMedicine();
         gameManager.NewCharacter();
         
         this.gameObject.SetActive(false);

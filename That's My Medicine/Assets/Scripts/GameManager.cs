@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    
-
     int score;
+    public GameObject scoreCounter;
     List<string> medicine = new List<string>();
 
     float width;
@@ -26,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject letter;
     SpriteRenderer letterSprite;
+    public GameObject book;
+    public GameObject UIelements;
 
     public GameObject LetterAmputate;
     public GameObject LetterPray;
@@ -49,6 +50,8 @@ public class GameManager : MonoBehaviour
 
     AudioSource succesAudio;
     AudioSource deathAudio;
+
+    int randomValue;
 
     void Start()
     {
@@ -85,48 +88,59 @@ public class GameManager : MonoBehaviour
     {
         if (isOnPosition)
         {
+            itemList.SetActive(true);
+            book.SetActive(true);
+            UIelements.SetActive(true);
+
             if (currentMedicine == "Amputate")
             {
                 LetterAmputate.SetActive(true);
+                CheckClick.letter = LetterAmputate;
             }
             if (currentMedicine == "Pray")
             {
                 LetterPray.SetActive(true);
+                CheckClick.letter = LetterPray;
             }
             if (currentMedicine == "Soap")
             {
                 LetterSoap.SetActive(true);
+                CheckClick.letter = LetterSoap;
             }
             if (currentMedicine == "Distance")
             {
                 LetterDistance.SetActive(true);
+                CheckClick.letter = LetterDistance;
             }
             if (currentMedicine == "Inhalator")
             {
                 LetterInhalator.SetActive(true);
+                CheckClick.letter = LetterInhalator;
             }
             if (currentMedicine == "Needle")
             {
                 LetterNeedle.SetActive(true);
+                CheckClick.letter = LetterNeedle;
             }
             if (currentMedicine == "Strip")
             {
                 LetterStrip.SetActive(true);
+                CheckClick.letter = LetterStrip;
             }
             if (currentMedicine == "Bottle")
             {
                 LetterBottle.SetActive(true);
+                CheckClick.letter = LetterBottle;
             }
+
             isOnPosition = false;
         }
     }
-    public void MakeMedicine(int amount)
+    public void MakeMedicine()
     {
-        int randomValue = Random.Range(0, amount);
+        randomValue = Random.Range(0, medicine.Count);
         currentMedicine = medicine[randomValue];
         Debug.Log(currentMedicine);
-
-        
     }
 
     public void CheckMedicine(string selectedMedicine)
@@ -138,6 +152,7 @@ public class GameManager : MonoBehaviour
             MoveObject.succes = true;
             succesAudio = GameObject.Find("Succes").GetComponent<AudioSource>();
             succesAudio.Play();
+            medicine.RemoveAt(randomValue);
         }
         else
         {
@@ -145,6 +160,8 @@ public class GameManager : MonoBehaviour
             MoveObject.death = true;
             succesAudio = GameObject.Find("Death").GetComponent<AudioSource>();
             succesAudio.Play();
+            score++;
+
         }
     }
 
