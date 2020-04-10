@@ -47,6 +47,9 @@ public class GameManager : MonoBehaviour
 
     public bool isOnPosition;
 
+    AudioSource succesAudio;
+    AudioSource deathAudio;
+
     void Start()
     {
         widthDistance = Screen.width/8;
@@ -133,11 +136,15 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("SUCCES");
             MoveObject.succes = true;
+            succesAudio = GameObject.Find("Succes").GetComponent<AudioSource>();
+            succesAudio.Play();
         }
         else
         {
             Debug.Log("FUCK"); 
             MoveObject.death = true;
+            succesAudio = GameObject.Find("Death").GetComponent<AudioSource>();
+            succesAudio.Play();
         }
     }
 

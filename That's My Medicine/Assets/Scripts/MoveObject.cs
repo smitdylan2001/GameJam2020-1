@@ -15,23 +15,33 @@ public class MoveObject : MonoBehaviour
     public static bool death;
 
     public GameObject nextButton;
+    AudioSource bell;
+
 
     void Awake()
     {
         willMove = true;
         succes = false;
         death = false;
+        
+    }
+    private void Start()
+    {
+        bell = GameObject.Find("Bell").GetComponent<AudioSource>();
+        bell.Play();
     }
 
     void Update()
     {
         if (willMove)
         {
+            
             transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), endPosition.transform.position, 100 * Time.deltaTime);
+            
         }
         if (transform.position.x >= 490 && transform.position.x <= 500)
         {
-            Debug.Log("to");
+            
             gameManager.isOnPosition = true;
             
         }
