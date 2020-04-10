@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    int score;
+    int score = 0;
     public GameObject scoreCounter;
     List<string> medicine = new List<string>();
 
@@ -161,7 +162,7 @@ public class GameManager : MonoBehaviour
             succesAudio = GameObject.Find("Death").GetComponent<AudioSource>();
             succesAudio.Play();
             score++;
-
+            scoreCounter.GetComponent<Text>().text = score.ToString();
         }
     }
 
