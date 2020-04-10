@@ -203,8 +203,16 @@ public class GameManager : MonoBehaviour
     public void MakeMedicine()
     {
         randomValue = Random.Range(0, medicine.Count);
-        currentMedicine = medicine[randomValue];
-        Debug.Log(currentMedicine);
+        if (medicine.Count == 0)
+        {
+            Debug.LogError("You finished! You killed " + score + " people!");
+            scoreCounter.GetComponent<Text>().text = score.ToString() + "Done!";
+        }
+        else
+        {
+            currentMedicine = medicine[randomValue];
+            Debug.Log(currentMedicine);
+        }
     }
 
     public void CheckMedicine(string selectedMedicine)
@@ -212,11 +220,11 @@ public class GameManager : MonoBehaviour
         Debug.Log(selectedMedicine);
         if (selectedMedicine == currentMedicine)
         {
-            Debug.Log("SUCCES");
             MoveObject.succes = true;
             succesAudio = GameObject.Find("Succes").GetComponent<AudioSource>();
             succesAudio.Play();
             medicine.RemoveAt(randomValue);
+            Debug.Log("SUCCES");
         }
         else
         {
@@ -224,6 +232,7 @@ public class GameManager : MonoBehaviour
             MoveObject.death = true;
             succesAudio = GameObject.Find("Death").GetComponent<AudioSource>();
             succesAudio.Play();
+            medicine.RemoveAt(randomValue);
             score++;
             scoreCounter.GetComponent<Text>().text = score.ToString();
         }
@@ -241,33 +250,65 @@ public class GameManager : MonoBehaviour
         {
             PeopleAmputate.SetActive(true);
         }
-        if (currentMedicine == "Pray")
+        else if (currentMedicine == "Pray")
         {
             PeoplePray.SetActive(true);
         }
-        if (currentMedicine == "Soap")
+        else if (currentMedicine == "Soap")
         {
             PeopleSoap.SetActive(true);
         }
-        if (currentMedicine == "Distance")
+        else if (currentMedicine == "Distance")
         {
             PeopleDistance.SetActive(true);
         }
-        if (currentMedicine == "Inhalator")
+        else if (currentMedicine == "Inhalator")
         {
             PeopleInhalator.SetActive(true);
         }
-        if (currentMedicine == "Needle")
+        else if (currentMedicine == "Needle")
         {
             PeopleNeedle.SetActive(true);
         }
-        if (currentMedicine == "Strip")
+        else if (currentMedicine == "Strip")
         {
             PeopleStrip.SetActive(true);
         }
-        if (currentMedicine == "Bottle")
+        else if (currentMedicine == "Bottle")
         {
             PeopleBottle.SetActive(true);
+        }
+        else if (currentMedicine == "Glitter")
+        {
+            PeopleGlitter.SetActive(true);
+        }
+        else if (currentMedicine == "Fresh")
+        {
+            PeopleFresh.SetActive(true);
+        }
+        else if (currentMedicine == "Cirkel")
+        {
+            PeopleCirkel.SetActive(true);
+        }
+        else if (currentMedicine == "Chocola")
+        {
+            PeopleChocola.SetActive(true);
+        }
+        else if (currentMedicine == "Bloedzuiger")
+        {
+            PeopleBloedzuiger.SetActive(true);
+        }
+        else if (currentMedicine == "Spray")
+        {
+            PeopleSpray.SetActive(true);
+        }
+        else if (currentMedicine == "Viagra")
+        {
+            PeopleViagra.SetActive(true);
+        }
+        else if (currentMedicine == "Water")
+        {
+            PeopleWater.SetActive(true);
         }
     }
 }

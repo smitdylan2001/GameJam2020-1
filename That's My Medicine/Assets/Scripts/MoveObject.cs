@@ -8,7 +8,7 @@ public class MoveObject : MonoBehaviour
     public GameObject endPosition;
     public GameObject succesPosition;
     public GameObject deathPosition;
-    float speed;
+    float speed=300; 
     bool willMove;
     public GameManager gameManager;
     public static bool succes;
@@ -23,7 +23,7 @@ public class MoveObject : MonoBehaviour
         willMove = true;
         succes = false;
         death = false;
-        
+        Debug.Log("running");
     }
     private void Start()
     {
@@ -35,33 +35,29 @@ public class MoveObject : MonoBehaviour
     {
         if (willMove)
         {
-            
-            transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), endPosition.transform.position, 100 * Time.deltaTime);
-            
+            this.transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), endPosition.transform.position, speed * Time.deltaTime);
         }
-        if (transform.position.x >= 490 && transform.position.x <= 500)
+        if (transform.position.x >= 485 && transform.position.x <= 495)
         {
-            
             gameManager.isOnPosition = true;
-            
+            Debug.Log("runnin");
         }
         if (succes)
         {
-            transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), succesPosition.transform.position,200 * Time.deltaTime);
-            
+            willMove = false;
+            this.transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), succesPosition.transform.position, speed * Time.deltaTime);
         }
-        if (transform.position.x >= 1150)
+        if (transform.position.x >= 1080)
         {
-            
             this.gameObject.SetActive(false);
             nextButton.SetActive(true);
-
         }
         if (death)
         {
-            transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), deathPosition.transform.position, 150 * Time.deltaTime);
+            willMove = false;
+            this.transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), deathPosition.transform.position, speed * Time.deltaTime);
         }
-        if(transform.position.y < -200)
+        if(transform.position.y < -100)
         {
             this.gameObject.SetActive(false);
             nextButton.SetActive(true);
