@@ -35,7 +35,7 @@ public class MoveObject : MonoBehaviour
     {
         if (willMove)
         {
-            this.transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), endPosition.transform.position, speed * Time.deltaTime);
+            this.transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), endPosition.transform.position, (speed -50) * Time.deltaTime);
             transform.rotation = Quaternion.Euler(20 * Mathf.Sin(Time.time * 5  ), 0f, Mathf.Sin(Time.time * 5) * 3);
         }
         if (transform.position.x >= 485 && transform.position.x <= 495)
