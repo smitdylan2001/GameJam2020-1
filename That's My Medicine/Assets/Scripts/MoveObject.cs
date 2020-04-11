@@ -36,6 +36,7 @@ public class MoveObject : MonoBehaviour
         if (willMove)
         {
             this.transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), endPosition.transform.position, speed * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(20 * Mathf.Sin(Time.time * 5  ), 0f, Mathf.Sin(Time.time * 5) * 3);
         }
         if (transform.position.x >= 485 && transform.position.x <= 495)
         {
@@ -46,6 +47,7 @@ public class MoveObject : MonoBehaviour
         {
             willMove = false;
             this.transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), succesPosition.transform.position, speed * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(20 * Mathf.Sin(Time.time * 5), 0f, Mathf.Sin(Time.time * 5) * 3);
         }
         if (transform.position.x >= 1080)
         {
@@ -56,8 +58,10 @@ public class MoveObject : MonoBehaviour
         {
             willMove = false;
             this.transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), deathPosition.transform.position, speed * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(40 * Mathf.Sin(Time.time * 12), 0f, 0f);
+            transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Sin(Time.time * 7) *12);
         }
-        if(transform.position.y < -100)
+        if (transform.position.y < -100)
         {
             this.gameObject.SetActive(false);
             nextButton.SetActive(true);
