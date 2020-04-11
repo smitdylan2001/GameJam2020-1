@@ -73,6 +73,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject menu;
 
+    public GameObject PerfectEnding;
+    public GameObject DecentEnding;
+    public GameObject BadEnding;
+    public GameObject DevilEnding;
+
     void Start()
     {
         widthDistance = Screen.width/8;
@@ -205,22 +210,20 @@ public class GameManager : MonoBehaviour
         {
             if (score == 0)
             {
-                Debug.Log("perfect");
+                PerfectEnding.SetActive(true);
             }
-            if (score > 0 && score < 4)
+            else if (score > 0 && score < 8)
             {
-                Debug.Log("great");
+                DecentEnding.SetActive(true);
             }
-            if (score > 10)
+            else if (score == 16)
             {
-                Debug.Log("ouch");
+                DevilEnding.SetActive(true);
             }
             else
             {
-                Debug.Log("Getting there");
+                BadEnding.SetActive(true);
             }
-            Debug.LogError("You finished! You killed " + score + " people!");
-            scoreCounter.GetComponent<Text>().text = score.ToString() + "Done!";
         }
         else
         {
