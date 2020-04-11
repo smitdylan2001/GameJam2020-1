@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     SpriteRenderer letterSprite;
     public GameObject book;
     public GameObject UIelements;
+    public GameObject Next;
 
     public GameObject LetterAmputate;
     public GameObject LetterPray;
@@ -70,6 +71,8 @@ public class GameManager : MonoBehaviour
 
     int randomValue;
 
+    public GameObject menu;
+
     void Start()
     {
         widthDistance = Screen.width/8;
@@ -95,7 +98,14 @@ public class GameManager : MonoBehaviour
         itemListPosition = itemList.GetComponent<Transform>();
         
     }
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            menu.SetActive(true);
+            Next.SetActive(false);
+        }
+    }
     void FixedUpdate()
     {
         if (moveBool)
