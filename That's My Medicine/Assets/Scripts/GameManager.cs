@@ -126,86 +126,73 @@ public class GameManager : MonoBehaviour
             itemList.SetActive(true);
             book.SetActive(true);
             UIelements.SetActive(true);
+            switch (currentMedicine)
+            {
+                case "Amputate":
+                    LetterAmputate.SetActive(true);
+                    CheckClick.letter = LetterAmputate;
+                    break;
 
-            if (currentMedicine == "Amputate")
-            {
-                LetterAmputate.SetActive(true);
-                CheckClick.letter = LetterAmputate;
-            }
-            else if (currentMedicine == "Pray")
-            {
-                LetterPray.SetActive(true);
-                CheckClick.letter = LetterPray;
-            }
-            else if (currentMedicine == "Soap")
-            {
-                LetterSoap.SetActive(true);
-                CheckClick.letter = LetterSoap;
-            }
-            else if (currentMedicine == "Distance")
-            {
-                LetterDistance.SetActive(true);
-                CheckClick.letter = LetterDistance;
-            }
-            else if (currentMedicine == "Inhalator")
-            {
-                LetterInhalator.SetActive(true);
-                CheckClick.letter = LetterInhalator;
-            }
-            else if (currentMedicine == "Needle")
-            {
-                LetterNeedle.SetActive(true);
-                CheckClick.letter = LetterNeedle;
-            }
-            else if (currentMedicine == "Strip")
-            {
-                LetterStrip.SetActive(true);
-                CheckClick.letter = LetterStrip;
-            }
-            else if (currentMedicine == "Bottle")
-            {
-                LetterBottle.SetActive(true);
-                CheckClick.letter = LetterBottle;
-            }
-            else if (currentMedicine == "Glitter")
-            {
-                LetterGlitter.SetActive(true);
-                CheckClick.letter = LetterGlitter;
-            }
-            else if (currentMedicine == "Fresh")
-            {
-                LetterFresh.SetActive(true);
-                CheckClick.letter = LetterFresh;
-            }
-            else if (currentMedicine == "Cirkel")
-            {
-                LetterCirkel.SetActive(true);
-                CheckClick.letter = LetterCirkel;
-            }
-            else if (currentMedicine == "Chocola")
-            {
-                LetterChocola.SetActive(true);
-                CheckClick.letter = LetterChocola;
-            }
-            else if (currentMedicine == "Bloedzuiger")
-            {
-                LetterBloedzuiger.SetActive(true);
-                CheckClick.letter = LetterBloedzuiger;
-            }
-            else if (currentMedicine == "Spray")
-            {
-                LetterSpray.SetActive(true);
-                CheckClick.letter = LetterSpray;
-            }
-            else if (currentMedicine == "Viagra")
-            {
-                LetterViagra.SetActive(true);
-                CheckClick.letter = LetterViagra;
-            }
-            else if (currentMedicine == "Water")
-            {
-                LetterWater.SetActive(true);
-                CheckClick.letter = LetterWater;
+                case "Pray":
+                        LetterPray.SetActive(true);
+                        CheckClick.letter = LetterPray;
+                        break;
+                case "Soap":
+                        LetterSoap.SetActive(true);
+                        CheckClick.letter = LetterSoap;
+                    break;
+                case "Distance":
+                        LetterDistance.SetActive(true);
+                        CheckClick.letter = LetterDistance;
+                        break;
+                case "Inhalator":
+                        LetterInhalator.SetActive(true);
+                        CheckClick.letter = LetterInhalator;
+                    break;
+                case "Needle":
+                        LetterNeedle.SetActive(true);
+                        CheckClick.letter = LetterNeedle;
+                        break;
+                case "Strip":
+                        LetterStrip.SetActive(true);
+                        CheckClick.letter = LetterStrip;
+                        break;
+                case "Bottle":
+                        LetterBottle.SetActive(true);
+                        CheckClick.letter = LetterBottle;
+                    break;
+                case "Glitter":
+                        LetterGlitter.SetActive(true);
+                        CheckClick.letter = LetterGlitter;
+                        break;
+                case "Fresh":
+                        LetterFresh.SetActive(true);
+                        CheckClick.letter = LetterFresh;
+                        break;
+                case "Cirkel":
+                        LetterCirkel.SetActive(true);
+                        CheckClick.letter = LetterCirkel;
+                        break;
+                case "Chocola":
+                        LetterChocola.SetActive(true);
+                        CheckClick.letter = LetterChocola;
+                        break;
+                case "Bloedzuiger":
+                        LetterBloedzuiger.SetActive(true);
+                        CheckClick.letter = LetterBloedzuiger;
+                        break;
+                case "Spray":
+                        LetterSpray.SetActive(true);
+                        CheckClick.letter = LetterSpray;
+                        break;
+                case "Viagra":
+                        LetterViagra.SetActive(true);
+                        CheckClick.letter = LetterViagra;
+                        break;
+                case "Water":
+                        LetterWater.SetActive(true);
+                        CheckClick.letter = LetterWater;
+                        break;
             }
             isOnPosition = false;
         }
@@ -215,6 +202,22 @@ public class GameManager : MonoBehaviour
         randomValue = Random.Range(0, medicine.Count);
         if (medicine.Count == 0)
         {
+            if (score == 0)
+            {
+                Debug.Log("perfect");
+            }
+            if (score > 0 && score < 4)
+            {
+                Debug.Log("great");
+            }
+            if (score > 10)
+            {
+                Debug.Log("ouch");
+            }
+            else
+            {
+                Debug.Log("Getting there");
+            }
             Debug.LogError("You finished! You killed " + score + " people!");
             scoreCounter.GetComponent<Text>().text = score.ToString() + "Done!";
         }
@@ -256,69 +259,56 @@ public class GameManager : MonoBehaviour
 
     public void NewCharacter()
     {
-        if (currentMedicine == "Amputate")
+        switch (currentMedicine)
         {
-            PeopleAmputate.SetActive(true);
-        }
-        else if (currentMedicine == "Pray")
-        {
-            PeoplePray.SetActive(true);
-        }
-        else if (currentMedicine == "Soap")
-        {
-            PeopleSoap.SetActive(true);
-        }
-        else if (currentMedicine == "Distance")
-        {
-            PeopleDistance.SetActive(true);
-        }
-        else if (currentMedicine == "Inhalator")
-        {
-            PeopleInhalator.SetActive(true);
-        }
-        else if (currentMedicine == "Needle")
-        {
-            PeopleNeedle.SetActive(true);
-        }
-        else if (currentMedicine == "Strip")
-        {
-            PeopleStrip.SetActive(true);
-        }
-        else if (currentMedicine == "Bottle")
-        {
-            PeopleBottle.SetActive(true);
-        }
-        else if (currentMedicine == "Glitter")
-        {
-            PeopleGlitter.SetActive(true);
-        }
-        else if (currentMedicine == "Fresh")
-        {
-            PeopleFresh.SetActive(true);
-        }
-        else if (currentMedicine == "Cirkel")
-        {
-            PeopleCirkel.SetActive(true);
-        }
-        else if (currentMedicine == "Chocola")
-        {
-            PeopleChocola.SetActive(true);
-        }
-        else if (currentMedicine == "Bloedzuiger")
-        {
-            PeopleBloedzuiger.SetActive(true);
-        }
-        else if (currentMedicine == "Spray")
-        {
-            PeopleSpray.SetActive(true);
-        }
-        else if (currentMedicine == "Viagra")
-        {
-            PeopleViagra.SetActive(true);
-        }
-        else if (currentMedicine == "Water")
-        {
-            PeopleWater.SetActive(true);
+            case "Amputate":
+                PeopleAmputate.SetActive(true);
+                break;
+            case "Pray":
+                PeoplePray.SetActive(true);
+                break;
+            case "Soap":
+                PeopleSoap.SetActive(true);
+                break;
+            case "Distance":
+                PeopleDistance.SetActive(true);
+                break;
+            case "Inhalator":
+                PeopleInhalator.SetActive(true);
+                break;
+            case "Needle":
+                PeopleNeedle.SetActive(true);
+                break;
+            case "Strip":
+                PeopleStrip.SetActive(true);
+                break;
+            case "Bottle":
+                PeopleBottle.SetActive(true);
+                break;
+            case "Glitter":
+                PeopleGlitter.SetActive(true);
+                break;
+            case "Fresh":
+                PeopleFresh.SetActive(true);
+                break;
+            case "Cirkel":
+                PeopleCirkel.SetActive(true);
+                break;
+            case "Chocola":
+                PeopleChocola.SetActive(true);
+                break;
+            case "Bloedzuiger":
+                PeopleBloedzuiger.SetActive(true);
+                break;
+            case "Spray":
+                PeopleSpray.SetActive(true);
+                break;
+            case "Viagra":
+                PeopleViagra.SetActive(true);
+                break;
+            case "Water":
+                PeopleWater.SetActive(true);
+                break;
         }
     }
 }
