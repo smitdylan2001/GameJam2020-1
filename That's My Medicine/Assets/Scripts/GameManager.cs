@@ -104,6 +104,7 @@ public class GameManager : MonoBehaviour
         {
             menu.SetActive(true);
             Next.SetActive(false);
+            
         }
     }
     void FixedUpdate()
