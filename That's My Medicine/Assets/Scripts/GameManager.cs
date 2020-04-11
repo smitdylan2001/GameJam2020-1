@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public GameObject book;
     public GameObject UIelements;
     public GameObject Next;
+    public GameObject Letters;
 
     public GameObject LetterAmputate;
     public GameObject LetterPray;
@@ -77,6 +78,7 @@ public class GameManager : MonoBehaviour
     public GameObject DecentEnding;
     public GameObject BadEnding;
     public GameObject DevilEnding;
+    bool nextWasLast;
 
     void Start()
     {
@@ -108,8 +110,19 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             menu.SetActive(true);
-            Next.SetActive(false);
-            
+            if (Next.gameObject.activeInHierarchy == true)
+            {
+                Next.SetActive(false);
+                nextWasLast = true;
+            }
+            else
+            {
+                itemList.SetActive(false);
+                Letters.SetActive(false);
+                book.SetActive(false);
+                UIelements.SetActive(false);
+                nextWasLast = false;
+            }
         }
     }
     void FixedUpdate()
@@ -313,6 +326,23 @@ public class GameManager : MonoBehaviour
             case "Water":
                 PeopleWater.SetActive(true);
                 break;
+        }
+    }
+
+    public void MakeActiveAgain()
+    {
+        menu.SetActive(false);
+        if (nextWasLast)
+        {
+            Next.SetActive(true);
+            Debug.Log("whow");
+        }
+        if (!nextWasLast)
+        {
+            itemList.SetActive(true);
+            Letters.SetActive(true);
+            book.SetActive(true);
+            UIelements.SetActive(true);
         }
     }
 }
