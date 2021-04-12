@@ -8,7 +8,7 @@ public class MoveObject : MonoBehaviour
     public GameObject endPosition;
     public GameObject succesPosition;
     public GameObject deathPosition;
-    float speed=300; 
+	readonly float speed=300; 
     bool willMove;
     public GameManager gameManager;
     public static bool succes;
@@ -23,10 +23,11 @@ public class MoveObject : MonoBehaviour
         willMove = true;
         succes = false;
         death = false;
-        Debug.Log("running");
     }
+
     private void Start()
     {
+        //TODO improve
         bell = GameObject.Find("Bell").GetComponent<AudioSource>();
         bell.Play();
     }

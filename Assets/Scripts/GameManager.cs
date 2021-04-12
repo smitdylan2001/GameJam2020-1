@@ -9,10 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject scoreCounter;
     List<string> medicine = new List<string>();
 
-    float width;
-    float height;
-    float widthDistance;
-    float heightDistance;
+   
 
     string currentMedicine;
 
@@ -20,12 +17,10 @@ public class GameManager : MonoBehaviour
     Transform itemListPosition;
 
     bool moveBool;
-    float tempPosition;
     int moveDirection;
     public float slideSpeed;
 
     public GameObject letter;
-    SpriteRenderer letterSprite;
     public GameObject book;
     public GameObject UIelements;
     public GameObject Next;
@@ -68,7 +63,6 @@ public class GameManager : MonoBehaviour
     public bool isOnPosition;
 
     AudioSource succesAudio;
-    AudioSource deathAudio;
 
     int randomValue;
 
@@ -82,9 +76,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        widthDistance = Screen.width/8;
-        heightDistance = Screen.height/3;
-
         medicine.Add("Amputate");
         medicine.Add("Pray");
         medicine.Add("Soap");

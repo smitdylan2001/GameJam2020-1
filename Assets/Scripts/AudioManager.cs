@@ -11,12 +11,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource sfx3;
     public Slider backgroundSlider;
     public Slider sfxSlider;
-
-    void Start()
-    {
-        
-    }
-
+    //TODO improve only when changing slider
     // Update is called once per frame
     void Update()
     {
