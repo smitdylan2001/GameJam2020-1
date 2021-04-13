@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -232,24 +231,20 @@ public class GameManager : MonoBehaviour
         else
         {
             currentMedicine = medicine[randomValue];
-            Debug.Log(currentMedicine);
         }
     }
 
     public void CheckMedicine(string selectedMedicine)
     {
-        Debug.Log(selectedMedicine);
         if (selectedMedicine == currentMedicine)
         {
             MoveObject.succes = true;
             succesAudio = GameObject.Find("Succes").GetComponent<AudioSource>();
             succesAudio.Play();
             medicine.RemoveAt(randomValue);
-            Debug.Log("SUCCES");
         }
         else
         {
-            Debug.Log("FUCK"); 
             MoveObject.death = true;
             succesAudio = GameObject.Find("Death").GetComponent<AudioSource>();
             succesAudio.Play();
@@ -326,7 +321,6 @@ public class GameManager : MonoBehaviour
         if (nextWasLast)
         {
             Next.SetActive(true);
-            Debug.Log("whow");
         }
         if (!nextWasLast)
         {

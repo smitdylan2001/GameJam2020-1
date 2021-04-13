@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MoveObject : MonoBehaviour
 {
@@ -42,7 +40,6 @@ public class MoveObject : MonoBehaviour
         if (transform.position.x >= 485 && transform.position.x <= 495)
         {
             gameManager.isOnPosition = true;
-            Debug.Log("runnin");
         }
         if (succes)
         {

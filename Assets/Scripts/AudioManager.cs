@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
@@ -9,15 +6,15 @@ public class AudioManager : MonoBehaviour
     public AudioSource sfx1;
     public AudioSource sfx2;
     public AudioSource sfx3;
-    public Slider backgroundSlider;
-    public Slider sfxSlider;
-    //TODO improve only when changing slider
-    // Update is called once per frame
-    void Update()
+
+    public void ChangeMusic(float volume)
     {
-        background.volume = backgroundSlider.value;
-        sfx1.volume = sfxSlider.value;
-        sfx2.volume = sfxSlider.value;
-        sfx3.volume = sfxSlider.value;
+        background.volume = volume;
+    }
+    public void ChangeSFX(float volume)
+    {
+        sfx1.volume = volume /100 * 45;
+        sfx2.volume = volume / 100 * 80;
+        sfx3.volume = volume / 100 * 80;
     }
 }

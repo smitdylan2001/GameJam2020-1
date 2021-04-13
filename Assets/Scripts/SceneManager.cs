@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-    
-
+﻿using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
@@ -16,6 +12,4 @@ public class SceneManager : MonoBehaviour
     {
         Application.Quit();
     }
-
-    
 }
