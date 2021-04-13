@@ -153,8 +153,8 @@ PlayerSettings:
   androidSupportedAspectRatio: 0
   androidMaxAspectRatio: 2.07
   applicationIdentifier:
-    Android: com.TeamNotFound.ThatsMyMedicine
-    Standalone: com.TeamNotFound.ThatsMyMedicine
+    Android: com.Team404NotFound.ThatsMyMedicine
+    Standalone: com.Team404NotFound.ThatsMyMedicine
   buildNumber:
     Standalone: 1
     iPhone: 0
@@ -246,8 +246,8 @@ PlayerSettings:
   AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/Game Dev/Unity/DevDunk.keystore
-  AndroidKeyaliasName: devdunk
+  AndroidKeystoreName: '{inproject}: user.keystore'
+  AndroidKeyaliasName: dev dunk
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
